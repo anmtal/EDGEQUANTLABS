@@ -7,234 +7,139 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --bg:        #060610;
-      --surface:   #0d0d20;
-      --card:      rgba(255,255,255,0.04);
-      --border:    rgba(255,255,255,0.08);
-      --green:     #00f5a0;
-      --green-dim: #00c97a;
-      --indigo:    #6c63ff;
-      --indigo2:   #a78bfa;
-      --text:      #e8eaf6;
-      --muted:     #8892b0;
-      --font:      'Plus Jakarta Sans', sans-serif;
-      --mono:      'Space Grotesk', sans-serif;
+      --bg:#060610; --surface:#0d0d20; --card:rgba(255,255,255,0.04);
+      --border:rgba(255,255,255,0.08); --green:#00f5a0; --green-dim:#00c97a;
+      --indigo:#6c63ff; --indigo2:#a78bfa; --text:#e8eaf6; --muted:#8892b0;
+      --font:'Plus Jakarta Sans',sans-serif; --mono:'Space Grotesk',sans-serif;
     }
-
     html { scroll-behavior: smooth; }
-    body { background: var(--bg); color: var(--text); font-family: var(--font); overflow-x: hidden; }
-
+    body { background:var(--bg); color:var(--text); font-family:var(--font); overflow-x:hidden; }
     body::before {
-      content: '';
-      position: fixed; inset: 0; z-index: 0;
-      background-image:
-        linear-gradient(rgba(108,99,255,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(108,99,255,0.03) 1px, transparent 1px);
-      background-size: 48px 48px;
-      pointer-events: none;
+      content:''; position:fixed; inset:0; z-index:0;
+      background-image: linear-gradient(rgba(108,99,255,0.03) 1px,transparent 1px), linear-gradient(90deg,rgba(108,99,255,0.03) 1px,transparent 1px);
+      background-size:48px 48px; pointer-events:none;
     }
 
-    /* ─── LOGO — BIGGER ICON + NAME, SMALLER TAGLINE ─── */
-    .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; user-select: none; }
-    .logo-icon {
-      width: 50px; height: 50px; border-radius: 12px;
-      background: linear-gradient(135deg, var(--indigo), var(--green));
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--mono); font-weight: 700; font-size: 21px;
-      color: #fff; letter-spacing: -1px;
-      box-shadow: 0 0 22px rgba(108,99,255,0.55); flex-shrink: 0;
-    }
-    .logo-text { display: flex; flex-direction: column; line-height: 1; }
-    .logo-name { font-family: var(--mono); font-weight: 700; font-size: 23px; letter-spacing: 0.01em; color: #fff; }
-    .logo-name span { color: var(--green); }
-    .logo-tag { font-size: 7.5px; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
+    .logo { display:flex; align-items:center; gap:12px; text-decoration:none; user-select:none; }
+    .logo-icon { width:50px; height:50px; border-radius:12px; background:linear-gradient(135deg,var(--indigo),var(--green)); display:flex; align-items:center; justify-content:center; font-family:var(--mono); font-weight:700; font-size:21px; color:#fff; letter-spacing:-1px; box-shadow:0 0 22px rgba(108,99,255,0.55); flex-shrink:0; }
+    .logo-text { display:flex; flex-direction:column; line-height:1; }
+    .logo-name { font-family:var(--mono); font-weight:700; font-size:23px; letter-spacing:0.01em; color:#fff; }
+    .logo-name span { color:var(--green); }
+    .logo-tag { font-size:7.5px; font-weight:600; letter-spacing:0.13em; text-transform:uppercase; color:var(--muted); margin-top:4px; }
 
-    /* ─── NAV ─── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(6,6,16,0.82); backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
-      padding: 0 5%; height: 74px;
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .nav-links { display: flex; gap: 32px; align-items: center; }
-    .nav-links a { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500; letter-spacing: 0.02em; transition: color .2s; }
-    .nav-links a:hover { color: #fff; }
-    .nav-cta {
-      background: linear-gradient(135deg, var(--indigo), var(--green-dim));
-      color: #fff !important; padding: 9px 22px; border-radius: 8px;
-      font-weight: 600 !important; font-size: 13.5px !important; transition: opacity .2s !important;
-    }
-    .nav-cta:hover { opacity: .85; }
+    nav { position:fixed; top:0; left:0; right:0; z-index:100; background:rgba(6,6,16,0.82); backdrop-filter:blur(20px); border-bottom:1px solid var(--border); padding:0 5%; height:74px; display:flex; align-items:center; justify-content:space-between; }
+    .nav-links { display:flex; gap:32px; align-items:center; }
+    .nav-links a { color:var(--muted); text-decoration:none; font-size:14px; font-weight:500; letter-spacing:0.02em; transition:color .2s; }
+    .nav-links a:hover { color:#fff; }
+    .nav-cta { background:linear-gradient(135deg,var(--indigo),var(--green-dim)); color:#fff !important; padding:9px 22px; border-radius:8px; font-weight:600 !important; font-size:13.5px !important; transition:opacity .2s !important; }
+    .nav-cta:hover { opacity:.85; }
 
-    /* ─── HERO ─── */
-    .hero {
-      position: relative; z-index: 1;
-      min-height: 100vh; display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      text-align: center; padding: 120px 6% 80px; overflow: hidden;
-    }
-    .hero-glow {
-      position: absolute; width: 700px; height: 700px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(108,99,255,0.18) 0%, transparent 70%);
-      top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none;
-    }
-    .hero-glow2 {
-      position: absolute; width: 400px; height: 400px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(0,245,160,0.10) 0%, transparent 70%);
-      top: 30%; right: 10%; pointer-events: none;
-    }
-    .badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(108,99,255,0.12); border: 1px solid rgba(108,99,255,0.3);
-      color: var(--indigo2); font-size: 12.5px; font-weight: 600;
-      letter-spacing: 0.08em; text-transform: uppercase;
-      padding: 6px 16px; border-radius: 100px; margin-bottom: 28px;
-    }
-    .badge-dot {
-      width: 7px; height: 7px; border-radius: 50%;
-      background: var(--green); box-shadow: 0 0 8px var(--green);
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .4; } }
-    .hero h1 { font-size: clamp(2.6rem, 6vw, 5rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; max-width: 860px; margin-bottom: 22px; }
-    .hero h1 .accent { color: var(--green); }
-    .hero h1 .accent2 { color: var(--indigo2); }
-    .hero p { color: var(--muted); font-size: clamp(1rem, 2vw, 1.2rem); max-width: 560px; line-height: 1.7; margin-bottom: 40px; }
-    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
-    .btn-primary {
-      background: linear-gradient(135deg, var(--indigo), var(--green-dim));
-      color: #fff; padding: 14px 32px; border-radius: 10px;
-      text-decoration: none; font-weight: 700; font-size: 15px;
-      box-shadow: 0 4px 24px rgba(108,99,255,0.35); transition: transform .2s, box-shadow .2s;
-    }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(108,99,255,0.5); }
-    .btn-ghost {
-      background: transparent; color: var(--text); padding: 14px 32px;
-      border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 15px;
-      border: 1px solid var(--border); transition: border-color .2s, background .2s;
-    }
-    .btn-ghost:hover { border-color: rgba(255,255,255,0.25); background: rgba(255,255,255,0.04); }
-    .hero-stats { display: flex; gap: 40px; flex-wrap: wrap; justify-content: center; margin-top: 60px; }
-    .stat { text-align: center; }
-    .stat-val { font-family: var(--mono); font-size: 1.7rem; font-weight: 700; color: #fff; }
-    .stat-val span { color: var(--green); }
-    .stat-lbl { font-size: 12px; color: var(--muted); margin-top: 2px; letter-spacing: 0.04em; }
+    .hero { position:relative; z-index:1; min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:120px 6% 80px; overflow:hidden; }
+    .hero-glow { position:absolute; width:700px; height:700px; border-radius:50%; background:radial-gradient(circle,rgba(108,99,255,0.18) 0%,transparent 70%); top:50%; left:50%; transform:translate(-50%,-50%); pointer-events:none; }
+    .hero-glow2 { position:absolute; width:400px; height:400px; border-radius:50%; background:radial-gradient(circle,rgba(0,245,160,0.10) 0%,transparent 70%); top:30%; right:10%; pointer-events:none; }
+    .badge { display:inline-flex; align-items:center; gap:8px; background:rgba(108,99,255,0.12); border:1px solid rgba(108,99,255,0.3); color:var(--indigo2); font-size:12.5px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; padding:6px 16px; border-radius:100px; margin-bottom:28px; }
+    .badge-dot { width:7px; height:7px; border-radius:50%; background:var(--green); box-shadow:0 0 8px var(--green); animation:pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+    .hero h1 { font-size:clamp(2.6rem,6vw,5rem); font-weight:800; line-height:1.1; letter-spacing:-0.03em; max-width:860px; margin-bottom:22px; }
+    .hero h1 .accent { color:var(--green); }
+    .hero h1 .accent2 { color:var(--indigo2); }
+    .hero p { color:var(--muted); font-size:clamp(1rem,2vw,1.2rem); max-width:560px; line-height:1.7; margin-bottom:40px; }
+    .hero-btns { display:flex; gap:14px; flex-wrap:wrap; justify-content:center; }
+    .btn-primary { background:linear-gradient(135deg,var(--indigo),var(--green-dim)); color:#fff; padding:14px 32px; border-radius:10px; text-decoration:none; font-weight:700; font-size:15px; box-shadow:0 4px 24px rgba(108,99,255,0.35); transition:transform .2s,box-shadow .2s; }
+    .btn-primary:hover { transform:translateY(-2px); box-shadow:0 8px 32px rgba(108,99,255,0.5); }
+    .btn-ghost { background:transparent; color:var(--text); padding:14px 32px; border-radius:10px; text-decoration:none; font-weight:600; font-size:15px; border:1px solid var(--border); transition:border-color .2s,background .2s; }
+    .btn-ghost:hover { border-color:rgba(255,255,255,0.25); background:rgba(255,255,255,0.04); }
+    .hero-stats { display:flex; gap:40px; flex-wrap:wrap; justify-content:center; margin-top:60px; }
+    .stat { text-align:center; }
+    .stat-val { font-family:var(--mono); font-size:1.7rem; font-weight:700; color:#fff; }
+    .stat-val span { color:var(--green); }
+    .stat-lbl { font-size:12px; color:var(--muted); margin-top:2px; letter-spacing:0.04em; }
 
-    section { position: relative; z-index: 1; padding: 90px 6%; }
-    .section-eyebrow { font-size: 11.5px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--green); margin-bottom: 10px; }
-    .section-title { font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 14px; }
-    .section-sub { color: var(--muted); font-size: 1.05rem; line-height: 1.7; max-width: 580px; }
-    .section-header { margin-bottom: 56px; }
+    section { position:relative; z-index:1; padding:90px 6%; }
+    .section-eyebrow { font-size:11.5px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--green); margin-bottom:10px; }
+    .section-title { font-size:clamp(1.8rem,3.5vw,2.8rem); font-weight:800; letter-spacing:-0.02em; margin-bottom:14px; }
+    .section-sub { color:var(--muted); font-size:1.05rem; line-height:1.7; max-width:580px; }
+    .section-header { margin-bottom:56px; }
 
-    .bento { display: grid; gap: 20px; }
-    .bento-3 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
-    .card {
-      background: var(--card); border: 1px solid var(--border); border-radius: 18px;
-      padding: 32px; backdrop-filter: blur(12px);
-      transition: border-color .25s, transform .25s, box-shadow .25s;
-    }
-    .card:hover { border-color: rgba(108,99,255,0.35); transform: translateY(-4px); box-shadow: 0 12px 40px rgba(108,99,255,0.12); }
-    .card-icon { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 20px; }
-    .icon-red   { background: rgba(239,68,68,0.15); box-shadow: 0 0 16px rgba(239,68,68,0.2); }
-    .icon-blue  { background: rgba(108,99,255,0.15); box-shadow: 0 0 16px rgba(108,99,255,0.2); }
-    .icon-green { background: rgba(0,245,160,0.12); box-shadow: 0 0 16px rgba(0,245,160,0.15); }
-    .card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; }
-    .card p  { color: var(--muted); font-size: 0.93rem; line-height: 1.7; }
-    .card-platform { display: inline-block; background: rgba(0,245,160,0.1); border: 1px solid rgba(0,245,160,0.2); color: var(--green); font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 10px; border-radius: 6px; margin-top: 18px; }
-    .feature-list { list-style: none; margin-top: 14px; }
-    .feature-list li { display: flex; align-items: flex-start; gap: 10px; color: var(--muted); font-size: 0.88rem; line-height: 1.6; margin-bottom: 7px; }
-    .feature-list li::before { content: "✓"; color: var(--green); font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+    .bento { display:grid; gap:20px; }
+    .bento-3 { grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); }
+    .card { background:var(--card); border:1px solid var(--border); border-radius:18px; padding:32px; backdrop-filter:blur(12px); transition:border-color .25s,transform .25s,box-shadow .25s; }
+    .card:hover { border-color:rgba(108,99,255,0.35); transform:translateY(-4px); box-shadow:0 12px 40px rgba(108,99,255,0.12); }
+    .card-icon { width:52px; height:52px; border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:24px; margin-bottom:20px; }
+    .icon-red   { background:rgba(239,68,68,0.15); box-shadow:0 0 16px rgba(239,68,68,0.2); }
+    .icon-blue  { background:rgba(108,99,255,0.15); box-shadow:0 0 16px rgba(108,99,255,0.2); }
+    .icon-green { background:rgba(0,245,160,0.12); box-shadow:0 0 16px rgba(0,245,160,0.15); }
+    .card h3 { font-size:1.2rem; font-weight:700; margin-bottom:10px; }
+    .card p  { color:var(--muted); font-size:0.93rem; line-height:1.7; }
+    .card-platform { display:inline-block; background:rgba(0,245,160,0.1); border:1px solid rgba(0,245,160,0.2); color:var(--green); font-size:11px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:4px 10px; border-radius:6px; margin-top:18px; }
+    .feature-list { list-style:none; margin-top:14px; }
+    .feature-list li { display:flex; align-items:flex-start; gap:10px; color:var(--muted); font-size:0.88rem; line-height:1.6; margin-bottom:7px; }
+    .feature-list li::before { content:"✓"; color:var(--green); font-weight:700; flex-shrink:0; margin-top:2px; }
 
-    .platform-banner {
-      background: linear-gradient(135deg, rgba(108,99,255,0.1), rgba(0,245,160,0.06));
-      border: 1px solid rgba(108,99,255,0.2); border-radius: 18px;
-      padding: 40px 48px; display: flex; align-items: center;
-      justify-content: space-between; flex-wrap: wrap; gap: 24px; margin-top: 60px;
-    }
-    .platform-label { font-size: 0.8rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px; }
-    .platform-name  { font-size: 1.6rem; font-weight: 800; color: #fff; }
-    .platform-badge { background: rgba(0,245,160,0.12); border: 1px solid rgba(0,245,160,0.3); color: var(--green); font-weight: 700; font-size: 13px; padding: 6px 16px; border-radius: 8px; }
-    .platform-future { color: var(--muted); font-size: 0.9rem; }
-    .platform-future strong { color: var(--indigo2); }
+    .screenshot-section { padding:0 6% 90px; position:relative; z-index:1; }
+    .screenshot-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(420px,1fr)); gap:28px; margin-top:56px; }
+    .screenshot-card { background:var(--card); border:1px solid var(--border); border-radius:20px; overflow:hidden; transition:border-color .25s,transform .25s,box-shadow .25s; }
+    .screenshot-card:hover { border-color:rgba(108,99,255,0.4); transform:translateY(-5px); box-shadow:0 16px 48px rgba(108,99,255,0.14); }
+    .screenshot-img-wrap { position:relative; background:#0a0a1a; padding:6px 6px 0 6px; }
+    .screenshot-bar { display:flex; align-items:center; gap:6px; padding:8px 14px; background:rgba(255,255,255,0.03); border-bottom:1px solid var(--border); }
+    .dot { width:10px; height:10px; border-radius:50%; }
+    .dot-r { background:#ff5f57; } .dot-y { background:#febc2e; } .dot-g { background:#28c840; }
+    .screenshot-img-wrap img { width:100%; display:block; border-radius:0 0 4px 4px; }
+    .screenshot-info { padding:22px 26px 26px; }
+    .screenshot-tag { display:inline-block; font-size:10.5px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--green); margin-bottom:8px; }
+    .screenshot-info h3 { font-size:1.1rem; font-weight:700; margin-bottom:7px; }
+    .screenshot-info p  { color:var(--muted); font-size:0.87rem; line-height:1.65; }
 
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-      gap: 20px;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-    .pricing-card {
-      background: var(--card); border: 1px solid var(--border); border-radius: 18px;
-      padding: 36px 32px; backdrop-filter: blur(12px);
-      transition: border-color .25s, transform .25s, box-shadow .25s; position: relative;
-    }
-    .pricing-card.featured { border-color: rgba(108,99,255,0.5); box-shadow: 0 0 40px rgba(108,99,255,0.15); }
-    .pricing-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(108,99,255,0.15); }
-    .featured-tag {
-      position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
-      background: linear-gradient(135deg, var(--indigo), var(--green-dim));
-      color: #fff; font-size: 11px; font-weight: 700;
-      letter-spacing: 0.08em; text-transform: uppercase;
-      padding: 5px 18px; border-radius: 100px; white-space: nowrap;
-    }
-    .pricing-name { font-size: 1rem; font-weight: 600; color: var(--muted); margin-bottom: 14px; }
-    .price-block { margin-bottom: 6px; }
-    .price-main { font-family: var(--mono); font-size: 2.6rem; font-weight: 700; color: #fff; line-height: 1; }
-    .price-main sup { font-size: 1.1rem; vertical-align: top; margin-top: 6px; color: var(--muted); }
-    .price-main .period { font-size: 1rem; color: var(--muted); font-weight: 400; }
-    .price-alt {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(0,245,160,0.08); border: 1px solid rgba(0,245,160,0.18);
-      border-radius: 8px; padding: 7px 14px; margin-top: 10px; margin-bottom: 4px;
-    }
-    .price-alt-label { font-size: 11px; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
-    .price-alt-val { font-family: var(--mono); font-size: 1.1rem; font-weight: 700; color: var(--green); }
-    .pricing-desc { color: var(--muted); font-size: 0.88rem; margin: 14px 0 24px; line-height: 1.6; }
-    .pricing-includes { list-style: none; margin-bottom: 28px; }
-    .pricing-includes li { display: flex; align-items: center; gap: 10px; font-size: 0.88rem; color: var(--muted); margin-bottom: 9px; }
-    .pricing-includes li .check { color: var(--green); font-weight: 700; }
-    .btn-buy {
-      display: block; text-align: center; text-decoration: none;
-      background: linear-gradient(135deg, var(--indigo), var(--green-dim));
-      color: #fff; font-weight: 700; font-size: 14px;
-      padding: 13px 24px; border-radius: 10px; transition: opacity .2s, transform .2s;
-    }
-    .btn-buy:hover { opacity: .85; transform: translateY(-1px); }
-    .btn-buy-ghost { background: transparent; border: 1px solid var(--border); color: var(--text); }
-    .btn-buy-ghost:hover { border-color: rgba(255,255,255,0.25); }
+    .platform-banner { background:linear-gradient(135deg,rgba(108,99,255,0.1),rgba(0,245,160,0.06)); border:1px solid rgba(108,99,255,0.2); border-radius:18px; padding:40px 48px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:24px; margin-top:60px; }
+    .platform-label { font-size:0.8rem; color:var(--muted); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:6px; }
+    .platform-name  { font-size:1.6rem; font-weight:800; color:#fff; }
+    .platform-badge { background:rgba(0,245,160,0.12); border:1px solid rgba(0,245,160,0.3); color:var(--green); font-weight:700; font-size:13px; padding:6px 16px; border-radius:8px; }
+    .platform-future { color:var(--muted); font-size:0.9rem; }
+    .platform-future strong { color:var(--indigo2); }
 
-    .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
-    .why-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 28px 24px; transition: border-color .25s; }
-    .why-card:hover { border-color: rgba(0,245,160,0.25); }
-    .why-num { font-family: var(--mono); font-size: 2.2rem; font-weight: 700; color: var(--green); opacity: .25; line-height: 1; margin-bottom: 10px; }
-    .why-title { font-weight: 700; font-size: 1rem; margin-bottom: 7px; }
-    .why-text  { color: var(--muted); font-size: 0.87rem; line-height: 1.65; }
+    .why-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px; }
+    .why-card { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:28px 24px; transition:border-color .25s; }
+    .why-card:hover { border-color:rgba(0,245,160,0.25); }
+    .why-num { font-family:var(--mono); font-size:2.2rem; font-weight:700; color:var(--green); opacity:.25; line-height:1; margin-bottom:10px; }
+    .why-title { font-weight:700; font-size:1rem; margin-bottom:7px; }
+    .why-text  { color:var(--muted); font-size:0.87rem; line-height:1.65; }
 
-    .cta-strip {
-      background: linear-gradient(135deg, rgba(108,99,255,0.15), rgba(0,245,160,0.08));
-      border: 1px solid rgba(108,99,255,0.2); border-radius: 24px;
-      padding: 64px 8%; text-align: center; margin: 0 6% 90px;
-    }
-    .cta-strip h2 { font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 16px; }
-    .cta-strip p  { color: var(--muted); font-size: 1.05rem; margin-bottom: 36px; }
+    .pricing-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(290px,1fr)); gap:20px; max-width:1000px; margin:0 auto; }
+    .pricing-card { background:var(--card); border:1px solid var(--border); border-radius:18px; padding:36px 32px; backdrop-filter:blur(12px); transition:border-color .25s,transform .25s,box-shadow .25s; position:relative; }
+    .pricing-card.featured { border-color:rgba(108,99,255,0.5); box-shadow:0 0 40px rgba(108,99,255,0.15); }
+    .pricing-card:hover { transform:translateY(-4px); box-shadow:0 12px 40px rgba(108,99,255,0.15); }
+    .featured-tag { position:absolute; top:-14px; left:50%; transform:translateX(-50%); background:linear-gradient(135deg,var(--indigo),var(--green-dim)); color:#fff; font-size:11px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:5px 18px; border-radius:100px; white-space:nowrap; }
+    .pricing-name { font-size:1rem; font-weight:600; color:var(--muted); margin-bottom:14px; }
+    .price-block { margin-bottom:6px; }
+    .price-main { font-family:var(--mono); font-size:2.6rem; font-weight:700; color:#fff; line-height:1; }
+    .price-main sup { font-size:1.1rem; vertical-align:top; margin-top:6px; color:var(--muted); }
+    .price-main .period { font-size:1rem; color:var(--muted); font-weight:400; }
+    .price-alt { display:inline-flex; align-items:center; gap:8px; background:rgba(0,245,160,0.08); border:1px solid rgba(0,245,160,0.18); border-radius:8px; padding:7px 14px; margin-top:10px; margin-bottom:4px; }
+    .price-alt-label { font-size:11px; color:var(--muted); letter-spacing:0.06em; text-transform:uppercase; }
+    .price-alt-val { font-family:var(--mono); font-size:1.1rem; font-weight:700; color:var(--green); }
+    .pricing-desc { color:var(--muted); font-size:0.88rem; margin:14px 0 24px; line-height:1.6; }
+    .pricing-includes { list-style:none; margin-bottom:28px; }
+    .pricing-includes li { display:flex; align-items:center; gap:10px; font-size:0.88rem; color:var(--muted); margin-bottom:9px; }
+    .pricing-includes li .check { color:var(--green); font-weight:700; }
+    .btn-buy { display:block; text-align:center; text-decoration:none; background:linear-gradient(135deg,var(--indigo),var(--green-dim)); color:#fff; font-weight:700; font-size:14px; padding:13px 24px; border-radius:10px; transition:opacity .2s,transform .2s; }
+    .btn-buy:hover { opacity:.85; transform:translateY(-1px); }
+    .btn-buy-ghost { background:transparent; border:1px solid var(--border); color:var(--text); }
+    .btn-buy-ghost:hover { border-color:rgba(255,255,255,0.25); }
 
-    footer {
-      position: relative; z-index: 1; border-top: 1px solid var(--border);
-      padding: 48px 6% 36px; display: flex; flex-wrap: wrap;
-      gap: 24px; justify-content: space-between; align-items: center;
-    }
-    .footer-copy { color: var(--muted); font-size: 13px; }
-    .footer-links { display: flex; gap: 24px; }
-    .footer-links a { color: var(--muted); font-size: 13px; text-decoration: none; transition: color .2s; }
-    .footer-links a:hover { color: #fff; }
+    .cta-strip { background:linear-gradient(135deg,rgba(108,99,255,0.15),rgba(0,245,160,0.08)); border:1px solid rgba(108,99,255,0.2); border-radius:24px; padding:64px 8%; text-align:center; margin:0 6% 90px; }
+    .cta-strip h2 { font-size:clamp(1.8rem,3vw,2.6rem); font-weight:800; letter-spacing:-0.02em; margin-bottom:16px; }
+    .cta-strip p  { color:var(--muted); font-size:1.05rem; margin-bottom:36px; }
 
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: var(--bg); }
-    ::-webkit-scrollbar-thumb { background: rgba(108,99,255,0.4); border-radius: 3px; }
+    footer { position:relative; z-index:1; border-top:1px solid var(--border); padding:48px 6% 36px; display:flex; flex-wrap:wrap; gap:24px; justify-content:space-between; align-items:center; }
+    .footer-copy { color:var(--muted); font-size:13px; }
+    .footer-links { display:flex; gap:24px; }
+    .footer-links a { color:var(--muted); font-size:13px; text-decoration:none; transition:color .2s; }
+    .footer-links a:hover { color:#fff; }
+
+    ::-webkit-scrollbar { width:6px; }
+    ::-webkit-scrollbar-track { background:var(--bg); }
+    ::-webkit-scrollbar-thumb { background:rgba(108,99,255,0.4); border-radius:3px; }
   </style>
 </head>
 <body>
@@ -250,7 +155,7 @@
   </a>
   <div class="nav-links">
     <a href="#indicators">Indicators</a>
-    <a href="#platforms">Platforms</a>
+    <a href="#screenshots">Screenshots</a>
     <a href="#pricing">Pricing</a>
     <a href="#contact">Contact</a>
     <a href="#pricing" class="nav-cta">Get Started →</a>
@@ -261,15 +166,8 @@
 <section class="hero">
   <div class="hero-glow"></div>
   <div class="hero-glow2"></div>
-  <div class="badge">
-    <span class="badge-dot"></span>
-    Now Available on NinjaTrader 8
-  </div>
-  <h1>
-    Professional Tools.<br>
-    <span class="accent">Engineered</span> for<br>
-    <span class="accent2">Performance.</span>
-  </h1>
+  <div class="badge"><span class="badge-dot"></span>Now Available on NinjaTrader 8</div>
+  <h1>Professional Tools.<br><span class="accent">Engineered</span> for<br><span class="accent2">Performance.</span></h1>
   <p>Precision-built indicators for serious traders. Protect your capital, manage your charts, and maximize every setup — all inside your trading platform.</p>
   <div class="hero-btns">
     <a href="#indicators" class="btn-primary">Explore Indicators</a>
@@ -304,8 +202,8 @@
       <span class="card-platform">NinjaTrader 8</span>
     </div>
     <div class="card">
-      <div class="card-icon icon-blue">👁️</div>
-      <h3>Indicator Visibility Manager</h3>
+      <div class="card-icon icon-blue">🔭</div>
+      <h3>Chart Lens</h3>
       <p>Take full command of your chart workspace. Toggle any indicator on or off with a single click — no more digging through properties panels during live market hours.</p>
       <ul class="feature-list">
         <li>One-click show / hide per indicator</li>
@@ -340,34 +238,66 @@
   </div>
 </section>
 
+<!-- SCREENSHOTS -->
+<div class="screenshot-section" id="screenshots">
+  <div class="section-header">
+    <p class="section-eyebrow">See It In Action</p>
+    <h2 class="section-title">Real Tools. Real Interface.</h2>
+    <p class="section-sub">Every pixel is designed to keep you focused on the market — not wrestling with your software.</p>
+  </div>
+  <div class="screenshot-grid">
+
+    <div class="screenshot-card">
+      <div class="screenshot-img-wrap">
+        <div class="screenshot-bar"><span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span></div>
+        <img src="equity-guard-screenshot.png" alt="Equity Guard NinjaTrader 8 panel" />
+      </div>
+      <div class="screenshot-info">
+        <span class="screenshot-tag">🛡️ Equity Guard</span>
+        <h3>Full Risk Control at a Glance</h3>
+        <p>Set your max drawdown, profit target, max contracts, consecutive losses, cooldown period and more — all from one clean panel. Live coloured progress bars show your drawdown and profit status in real time.</p>
+      </div>
+    </div>
+
+    <div class="screenshot-card">
+      <div class="screenshot-img-wrap">
+        <div class="screenshot-bar"><span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span></div>
+        <img src="chart-lens-screenshot.png" alt="Chart Lens NinjaTrader 8 indicator toggle panel" />
+      </div>
+      <div class="screenshot-info">
+        <span class="screenshot-tag">🔭 Chart Lens</span>
+        <h3>Instant Indicator Toggling</h3>
+        <p>Every indicator on your chart listed in a clean grid. One click flips any indicator on or off instantly — no menus, no delays. Keep your workspace exactly how you need it for any market condition.</p>
+      </div>
+    </div>
+
+    <div class="screenshot-card">
+      <div class="screenshot-img-wrap">
+        <div class="screenshot-bar"><span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span></div>
+        <img src="rr-tool-screenshot.png" alt="Reward to Risk Drawing Tool on NinjaTrader 8 chart" />
+      </div>
+      <div class="screenshot-info">
+        <span class="screenshot-tag">📐 R:R Drawing Tool</span>
+        <h3>Plan Every Trade Before You Take It</h3>
+        <p>Draw your entry, stop, and target directly on the chart. The tool instantly calculates your reward-to-risk ratio, dollar risk, and position size — so you never enter a trade without knowing your numbers.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 <!-- WHY EQL -->
-<section id="platforms" style="background: rgba(255,255,255,0.01); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+<section id="why" style="background:rgba(255,255,255,0.01); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
   <div class="section-header">
     <p class="section-eyebrow">Why EdgeQuantLabs</p>
     <h2 class="section-title">Built Different.</h2>
     <p class="section-sub">We don't build indicators to impress. We build them to work — fast, clean, and reliably — under real market conditions.</p>
   </div>
   <div class="why-grid">
-    <div class="why-card">
-      <div class="why-num">01</div>
-      <div class="why-title">Trade-Tested Logic</div>
-      <div class="why-text">Every feature exists because a real trader needed it. No bloat, no vanity metrics — just tools that solve live trading problems.</div>
-    </div>
-    <div class="why-card">
-      <div class="why-num">02</div>
-      <div class="why-title">Performance First</div>
-      <div class="why-text">Lightweight, optimized code that won't slow your platform. Engineered so that execution is never compromised.</div>
-    </div>
-    <div class="why-card">
-      <div class="why-num">03</div>
-      <div class="why-title">Clean UI Design</div>
-      <div class="why-text">Minimalist overlays that give you information without visual noise. Your chart stays your chart.</div>
-    </div>
-    <div class="why-card">
-      <div class="why-num">04</div>
-      <div class="why-title">Multi-Platform Roadmap</div>
-      <div class="why-text">Starting with NT8, expanding to TradingView, Sierra Chart, and more. One licence per machine — straightforward and transparent.</div>
-    </div>
+    <div class="why-card"><div class="why-num">01</div><div class="why-title">Trade-Tested Logic</div><div class="why-text">Every feature exists because a real trader needed it. No bloat, no vanity metrics — just tools that solve live trading problems.</div></div>
+    <div class="why-card"><div class="why-num">02</div><div class="why-title">Performance First</div><div class="why-text">Lightweight, optimized code that won't slow your platform. Engineered so that execution is never compromised.</div></div>
+    <div class="why-card"><div class="why-num">03</div><div class="why-title">Clean UI Design</div><div class="why-text">Minimalist overlays that give you information without visual noise. Your chart stays your chart.</div></div>
+    <div class="why-card"><div class="why-num">04</div><div class="why-title">Multi-Platform Roadmap</div><div class="why-text">Starting with NT8, expanding to TradingView, Sierra Chart, and more. One licence per machine — straightforward and transparent.</div></div>
   </div>
 </section>
 
@@ -378,19 +308,12 @@
     <h2 class="section-title">Simple. Transparent.</h2>
     <p class="section-sub">One licence per machine. No hidden fees. Equity Guard offers a flexible monthly plan or a one-time lifetime licence.</p>
   </div>
-
   <div class="pricing-grid">
-
     <div class="pricing-card featured">
       <div class="featured-tag">🛡️ Risk Manager</div>
       <div class="pricing-name" style="margin-top:12px;">Equity Guard</div>
-      <div class="price-block">
-        <div class="price-main"><sup>$</sup>24.99 <span class="period">/ month</span></div>
-      </div>
-      <div class="price-alt">
-        <span class="price-alt-label">Or own it forever</span>
-        <span class="price-alt-val">$149 one-time</span>
-      </div>
+      <div class="price-block"><div class="price-main"><sup>$</sup>24.99 <span class="period">/ month</span></div></div>
+      <div class="price-alt"><span class="price-alt-label">Or own it forever</span><span class="price-alt-val">$149 one-time</span></div>
       <div class="pricing-desc">Full automated risk management for NT8. Subscribe monthly or pay once and own it — per machine licence.</div>
       <ul class="pricing-includes">
         <li><span class="check">✓</span> Daily loss lock &amp; trailing drawdown</li>
@@ -401,12 +324,9 @@
       </ul>
       <a href="#contact" class="btn-buy">Get Equity Guard →</a>
     </div>
-
     <div class="pricing-card">
-      <div class="pricing-name">Indicator Visibility Manager</div>
-      <div class="price-block">
-        <div class="price-main"><sup>$</sup>49.99 <span class="period">one-time</span></div>
-      </div>
+      <div class="pricing-name">Chart Lens</div>
+      <div class="price-block"><div class="price-main"><sup>$</sup>49.99 <span class="period">one-time</span></div></div>
       <div class="pricing-desc">One-time licence per machine. Toggle any indicator on or off instantly — no subscriptions, yours to keep.</div>
       <ul class="pricing-includes">
         <li><span class="check">✓</span> One-click show / hide</li>
@@ -416,12 +336,9 @@
       </ul>
       <a href="#contact" class="btn-buy btn-buy-ghost">Buy Now</a>
     </div>
-
     <div class="pricing-card">
       <div class="pricing-name">R:R Drawing Tool</div>
-      <div class="price-block">
-        <div class="price-main"><sup>$</sup>49.99 <span class="period">one-time</span></div>
-      </div>
+      <div class="price-block"><div class="price-main"><sup>$</sup>49.99 <span class="period">one-time</span></div></div>
       <div class="pricing-desc">One-time licence per machine. Draw your setups, see your risk, size your positions — before every entry.</div>
       <ul class="pricing-includes">
         <li><span class="check">✓</span> Interactive R:R zone drawing</li>
@@ -431,7 +348,6 @@
       </ul>
       <a href="#contact" class="btn-buy btn-buy-ghost">Buy Now</a>
     </div>
-
   </div>
 </section>
 
