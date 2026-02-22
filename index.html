@@ -36,25 +36,27 @@
       pointer-events: none;
     }
 
-    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; user-select: none; }
+    /* ─── LOGO — BIGGER ICON + NAME, SMALLER TAGLINE ─── */
+    .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; user-select: none; }
     .logo-icon {
-      width: 38px; height: 38px; border-radius: 9px;
+      width: 50px; height: 50px; border-radius: 12px;
       background: linear-gradient(135deg, var(--indigo), var(--green));
       display: flex; align-items: center; justify-content: center;
-      font-family: var(--mono); font-weight: 700; font-size: 16px;
+      font-family: var(--mono); font-weight: 700; font-size: 21px;
       color: #fff; letter-spacing: -1px;
-      box-shadow: 0 0 18px rgba(108,99,255,0.5); flex-shrink: 0;
+      box-shadow: 0 0 22px rgba(108,99,255,0.55); flex-shrink: 0;
     }
     .logo-text { display: flex; flex-direction: column; line-height: 1; }
-    .logo-name { font-family: var(--mono); font-weight: 700; font-size: 17px; letter-spacing: 0.01em; color: #fff; }
+    .logo-name { font-family: var(--mono); font-weight: 700; font-size: 23px; letter-spacing: 0.01em; color: #fff; }
     .logo-name span { color: var(--green); }
-    .logo-tag { font-size: 9px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-top: 2px; }
+    .logo-tag { font-size: 7.5px; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
 
+    /* ─── NAV ─── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       background: rgba(6,6,16,0.82); backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
-      padding: 0 5%; height: 66px;
+      padding: 0 5%; height: 74px;
       display: flex; align-items: center; justify-content: space-between;
     }
     .nav-links { display: flex; gap: 32px; align-items: center; }
@@ -67,6 +69,7 @@
     }
     .nav-cta:hover { opacity: .85; }
 
+    /* ─── HERO ─── */
     .hero {
       position: relative; z-index: 1;
       min-height: 100vh; display: flex; flex-direction: column;
@@ -157,7 +160,6 @@
     .platform-future { color: var(--muted); font-size: 0.9rem; }
     .platform-future strong { color: var(--indigo2); }
 
-    /* PRICING — 3 equal columns */
     .pricing-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
@@ -369,7 +371,7 @@
   </div>
 </section>
 
-<!-- PRICING — 3 cards only -->
+<!-- PRICING -->
 <section id="pricing">
   <div class="section-header">
     <p class="section-eyebrow">Pricing</p>
@@ -379,7 +381,6 @@
 
   <div class="pricing-grid">
 
-    <!-- Equity Guard -->
     <div class="pricing-card featured">
       <div class="featured-tag">🛡️ Risk Manager</div>
       <div class="pricing-name" style="margin-top:12px;">Equity Guard</div>
@@ -401,7 +402,6 @@
       <a href="#contact" class="btn-buy">Get Equity Guard →</a>
     </div>
 
-    <!-- Indicator Visibility Manager -->
     <div class="pricing-card">
       <div class="pricing-name">Indicator Visibility Manager</div>
       <div class="price-block">
@@ -417,7 +417,6 @@
       <a href="#contact" class="btn-buy btn-buy-ghost">Buy Now</a>
     </div>
 
-    <!-- R:R Drawing Tool -->
     <div class="pricing-card">
       <div class="pricing-name">R:R Drawing Tool</div>
       <div class="price-block">
