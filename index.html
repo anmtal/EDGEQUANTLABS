@@ -2,393 +2,653 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>EdgeQuantLabs – Chart Smarter. Trade Sharper.</title>
-  <meta name="description" content="Professional NinjaTrader 8 indicators. Equity Guard, Visibility Manager, and Risk tools for serious traders."/>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EdgeQuantLabs – Engineered for Performance</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
-    :root {
-      /* Modern Fintech Palette */
-      --bg-body:    #030305;
-      --bg-glass:   rgba(20, 20, 25, 0.4);
-      --bg-card:    rgba(255, 255, 255, 0.03);
-      --bg-card-hover: rgba(255, 255, 255, 0.06);
-
-      --primary:    #22c55e;  /* Vibrant Green */
-      --primary-glow: rgba(34, 197, 94, 0.4);
-      --accent:     #6366f1;  /* Indigo */
-
-      --text-main:  #ffffff;
-      --text-muted: #94a3b8;
-
-      --border:     rgba(255, 255, 255, 0.08);
-      --border-hover: rgba(255, 255, 255, 0.15);
-
-      --font-main: 'Plus Jakarta Sans', sans-serif;
-    }
-
-    /* ── RESET & BASE ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #060610;
+      --surface:   #0d0d20;
+      --card:      rgba(255,255,255,0.04);
+      --border:    rgba(255,255,255,0.08);
+      --green:     #00f5a0;
+      --green-dim: #00c97a;
+      --indigo:    #6c63ff;
+      --indigo2:   #a78bfa;
+      --text:      #e8eaf6;
+      --muted:     #8892b0;
+      --font:      'Plus Jakarta Sans', sans-serif;
+      --mono:      'Space Grotesk', sans-serif;
+    }
+
     html { scroll-behavior: smooth; }
-    body { 
-      background-color: var(--bg-body); 
-      background-image: 
-        radial-gradient(circle at 15% 50%, rgba(99, 102, 241, 0.08), transparent 25%), 
-        radial-gradient(circle at 85% 30%, rgba(34, 197, 94, 0.05), transparent 25%);
-      color: var(--text-main); 
-      font-family: var(--font-main); 
-      line-height: 1.6; 
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
+    body { background: var(--bg); color: var(--text); font-family: var(--font); overflow-x: hidden; }
+
+    /* ─── NOISE / GRID OVERLAY ─── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0; z-index: 0;
+      background-image:
+        linear-gradient(rgba(108,99,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(108,99,255,0.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
     }
 
-    /* ── UTILS ── */
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-    .text-gradient {
-      background: linear-gradient(135deg, #fff 0%, #cbd5e1 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+    /* ─── LOGO ─── */
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      user-select: none;
     }
-    .text-accent { color: var(--primary); }
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center;
-      padding: 12px 28px; border-radius: 99px; font-weight: 600; font-size: 0.95rem;
-      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      text-decoration: none; cursor: pointer;
+    .logo-icon {
+      width: 38px; height: 38px;
+      border-radius: 9px;
+      background: linear-gradient(135deg, var(--indigo), var(--green));
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--mono);
+      font-weight: 700;
+      font-size: 16px;
+      color: #fff;
+      letter-spacing: -1px;
+      box-shadow: 0 0 18px rgba(108,99,255,0.5);
+      flex-shrink: 0;
     }
-    .btn-primary {
-      background: var(--text-main); color: #000;
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    .logo-text { display: flex; flex-direction: column; line-height: 1; }
+    .logo-name {
+      font-family: var(--mono);
+      font-weight: 700;
+      font-size: 17px;
+      letter-spacing: 0.01em;
+      color: #fff;
     }
-    .btn-primary:hover {
-      transform: translateY(-2px); box-shadow: 0 0 30px rgba(255, 255, 255, 0.25);
-    }
-    .btn-glass {
-      background: rgba(255,255,255,0.05); border: 1px solid var(--border);
-      color: var(--text-main); backdrop-filter: blur(10px);
-    }
-    .btn-glass:hover {
-      background: rgba(255,255,255,0.1); border-color: var(--text-main);
+    .logo-name span { color: var(--green); }
+    .logo-tag {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 2px;
     }
 
-    /* ── NAV ── */
+    /* ─── NAV ─── */
     nav {
-      position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
-      width: calc(100% - 48px); max-width: 900px; z-index: 100;
-      background: rgba(15, 15, 20, 0.6); backdrop-filter: blur(16px);
-      border: 1px solid var(--border); border-radius: 99px;
-      padding: 12px 24px; display: flex; justify-content: space-between; align-items: center;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(6,6,16,0.82);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 5%;
+      height: 66px;
+      display: flex; align-items: center; justify-content: space-between;
     }
-
-    .logo-img { 
-      height: 80px; /* Made the logo much larger */
-      width: auto; 
-      object-fit: contain; 
+    .nav-links { display: flex; gap: 32px; align-items: center; }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: #fff; }
+    .nav-cta {
+      background: linear-gradient(135deg, var(--indigo), var(--green-dim));
+      color: #fff !important;
+      padding: 9px 22px;
       border-radius: 8px;
-      margin: -10px 0; /* Adjust margins to let the logo be bigger than the nav bar slightly */
+      font-weight: 600 !important;
+      font-size: 13.5px !important;
+      transition: opacity .2s !important;
     }
+    .nav-cta:hover { opacity: .85; }
 
-    .nav-links { display: flex; gap: 32px; list-style: none; }
-    .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--text-main); }
-    .nav-actions { display: flex; gap: 12px; }
-
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
-      nav { top: 0; width: 100%; border-radius: 0; border-top: none; border-left: none; border-right: none; }
-      .logo-img { height: 60px; margin: 0; }
-    }
-
-    /* ── HERO ── */
+    /* ─── HERO ─── */
     .hero {
-      padding: 200px 0 100px; text-align: center; position: relative;
+      position: relative; z-index: 1;
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 120px 6% 80px;
+      overflow: hidden;
     }
-    .hero::before {
-      content: ''; position: absolute; top: 120px; left: 50%; transform: translateX(-50%);
-      width: 600px; height: 300px;
-      background: linear-gradient(180deg, var(--primary-glow) 0%, transparent 100%);
-      filter: blur(120px); opacity: 0.15; pointer-events: none; z-index: -1;
+    .hero-glow {
+      position: absolute;
+      width: 700px; height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(108,99,255,0.18) 0%, transparent 70%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    .hero-glow2 {
+      position: absolute;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,245,160,0.10) 0%, transparent 70%);
+      top: 30%; right: 10%;
+      pointer-events: none;
     }
     .badge {
       display: inline-flex; align-items: center; gap: 8px;
-      padding: 6px 16px; background: rgba(34, 197, 94, 0.1); 
-      border: 1px solid rgba(34, 197, 94, 0.2); border-radius: 99px;
-      color: var(--primary); font-size: 0.8rem; font-weight: 600; margin-bottom: 32px;
+      background: rgba(108,99,255,0.12);
+      border: 1px solid rgba(108,99,255,0.3);
+      color: var(--indigo2);
+      font-size: 12.5px; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 6px 16px; border-radius: 100px;
+      margin-bottom: 28px;
     }
-    .badge-dot { width: 6px; height: 6px; background: var(--primary); border-radius: 50%; box-shadow: 0 0 10px var(--primary); }
+    .badge-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 8px var(--green);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity: 1; } 50% { opacity: .4; }
+    }
+    .hero h1 {
+      font-size: clamp(2.6rem, 6vw, 5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      max-width: 860px;
+      margin-bottom: 22px;
+    }
+    .hero h1 .accent { color: var(--green); }
+    .hero h1 .accent2 { color: var(--indigo2); }
+    .hero p {
+      color: var(--muted);
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      max-width: 560px;
+      line-height: 1.7;
+      margin-bottom: 40px;
+    }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--indigo), var(--green-dim));
+      color: #fff;
+      padding: 14px 32px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: 0.01em;
+      box-shadow: 0 4px 24px rgba(108,99,255,0.35);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(108,99,255,0.5); }
+    .btn-ghost {
+      background: transparent;
+      color: var(--text);
+      padding: 14px 32px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+      border: 1px solid var(--border);
+      transition: border-color .2s, background .2s;
+    }
+    .btn-ghost:hover { border-color: rgba(255,255,255,0.25); background: rgba(255,255,255,0.04); }
 
-    h1 {
-      font-size: clamp(3.5rem, 7vw, 5.5rem); line-height: 1.1; font-weight: 800;
-      letter-spacing: -2px; margin-bottom: 24px;
+    .hero-stats {
+      display: flex; gap: 40px; flex-wrap: wrap; justify-content: center;
+      margin-top: 60px;
     }
-    .hero-sub {
-      font-size: 1.25rem; color: var(--text-muted); max-width: 580px; margin: 0 auto 48px;
-    }
-    .hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .stat { text-align: center; }
+    .stat-val { font-family: var(--mono); font-size: 1.7rem; font-weight: 700; color: #fff; }
+    .stat-val span { color: var(--green); }
+    .stat-lbl { font-size: 12px; color: var(--muted); margin-top: 2px; letter-spacing: 0.04em; }
 
-    /* ── BENTO GRID PRODUCTS ── */
+    /* ─── SECTION WRAPPER ─── */
+    section { position: relative; z-index: 1; padding: 90px 6%; }
+    .section-eyebrow {
+      font-size: 11.5px; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--green);
+      margin-bottom: 10px;
+    }
     .section-title {
-      font-size: 2.5rem; font-weight: 700; letter-spacing: -1px; margin-bottom: 16px; text-align: center;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 800; letter-spacing: -0.02em;
+      margin-bottom: 14px;
     }
-    .section-desc {
-      text-align: center; color: var(--text-muted); max-width: 600px; margin: 0 auto 64px;
-    }
+    .section-sub { color: var(--muted); font-size: 1.05rem; line-height: 1.7; max-width: 580px; }
+    .section-header { margin-bottom: 56px; }
 
-    .bento-grid {
-      display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; margin-bottom: 120px;
+    /* ─── BENTO GRID ─── */
+    .bento { display: grid; gap: 20px; }
+    .bento-3 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 32px;
+      backdrop-filter: blur(12px);
+      transition: border-color .25s, transform .25s, box-shadow .25s;
     }
-    .bento-card {
-      background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: 24px; padding: 40px; position: relative; overflow: hidden;
-      transition: all 0.4s ease; display: flex; flex-direction: column; justify-content: space-between;
-    }
-    .bento-card:hover {
-      border-color: var(--border-hover); background: var(--bg-card-hover);
+    .card:hover {
+      border-color: rgba(108,99,255,0.35);
       transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(108,99,255,0.12);
     }
-
-    /* Specific Grid Areas */
-    .card-1 { grid-column: span 7; }
-    .card-2 { grid-column: span 5; }
-    .card-3 { grid-column: span 12; display: flex; align-items: center; justify-content: space-between; }
-
-    @media (max-width: 900px) {
-      .card-1, .card-2, .card-3 { grid-column: span 12; }
-      .card-3 { flex-direction: column; align-items: flex-start; gap: 30px; }
-    }
-
     .card-icon {
-      width: 56px; height: 56px; background: rgba(255,255,255,0.05);
-      border-radius: 16px; display: flex; align-items: center; justify-content: center;
-      font-size: 1.5rem; margin-bottom: 24px; border: 1px solid var(--border);
+      width: 52px; height: 52px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; margin-bottom: 20px;
     }
-    .card-title { font-size: 1.5rem; font-weight: 700; margin-bottom: 12px; }
-    .card-text { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 32px; }
+    .icon-red   { background: rgba(239,68,68,0.15); box-shadow: 0 0 16px rgba(239,68,68,0.2); }
+    .icon-blue  { background: rgba(108,99,255,0.15); box-shadow: 0 0 16px rgba(108,99,255,0.2); }
+    .icon-green { background: rgba(0,245,160,0.12); box-shadow: 0 0 16px rgba(0,245,160,0.15); }
+    .card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; }
+    .card p  { color: var(--muted); font-size: 0.93rem; line-height: 1.7; }
 
-    /* Product Visuals (Abstract) */
-    .visual {
-      height: 160px; width: 100%; background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, transparent 100%);
-      border-radius: 12px; border: 1px solid var(--border); margin-top: auto;
-      position: relative; overflow: hidden;
-    }
-    .visual::after {
-      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 60%;
-      background: linear-gradient(to top, var(--bg-body), transparent);
+    .card-platform {
+      display: inline-block;
+      background: rgba(0,245,160,0.1);
+      border: 1px solid rgba(0,245,160,0.2);
+      color: var(--green);
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 4px 10px; border-radius: 6px;
+      margin-top: 18px;
     }
 
-    /* Tags */
-    .tag {
-      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.5px;
-      padding: 4px 10px; border-radius: 6px; text-transform: uppercase;
+    .feature-list { list-style: none; margin-top: 14px; }
+    .feature-list li {
+      display: flex; align-items: flex-start; gap: 10px;
+      color: var(--muted); font-size: 0.88rem; line-height: 1.6;
+      margin-bottom: 7px;
     }
-    .tag-featured { background: var(--primary); color: #000; }
-    .tag-std { background: rgba(255,255,255,0.1); color: var(--text-muted); }
+    .feature-list li::before {
+      content: '✓';
+      color: var(--green);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
 
-    /* ── PRICING ── */
-    .pricing-container {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; max-width: 900px; margin: 0 auto 120px;
+    /* ─── PLATFORM BANNER ─── */
+    .platform-banner {
+      background: linear-gradient(135deg, rgba(108,99,255,0.1), rgba(0,245,160,0.06));
+      border: 1px solid rgba(108,99,255,0.2);
+      border-radius: 18px;
+      padding: 40px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 24px;
+      margin-top: 60px;
     }
+    .platform-label { font-size: 0.8rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px; }
+    .platform-name  { font-size: 1.6rem; font-weight: 800; color: #fff; }
+    .platform-badge {
+      background: rgba(0,245,160,0.12);
+      border: 1px solid rgba(0,245,160,0.3);
+      color: var(--green);
+      font-weight: 700; font-size: 13px;
+      padding: 6px 16px; border-radius: 8px;
+    }
+    .platform-future { color: var(--muted); font-size: 0.9rem; }
+    .platform-future strong { color: var(--indigo2); }
+
+    /* ─── PRICING ─── */
+    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
     .pricing-card {
-      background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: 24px; padding: 40px; text-align: center;
-      transition: transform 0.3s; position: relative;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 36px 32px;
+      backdrop-filter: blur(12px);
+      transition: border-color .25s, transform .25s, box-shadow .25s;
+      position: relative;
     }
-    .pricing-card.highlight {
-      border-color: var(--primary);
-      box-shadow: 0 0 40px rgba(34, 197, 94, 0.05);
+    .pricing-card.featured {
+      border-color: rgba(108,99,255,0.5);
+      box-shadow: 0 0 40px rgba(108,99,255,0.15);
     }
-    .popular-pill {
+    .pricing-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(108,99,255,0.15);
+    }
+    .featured-tag {
       position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
-      background: var(--primary); color: #000; padding: 6px 16px;
-      font-size: 0.75rem; font-weight: 700; border-radius: 99px;
+      background: linear-gradient(135deg, var(--indigo), var(--green-dim));
+      color: #fff; font-size: 11px; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 5px 18px; border-radius: 100px;
+      white-space: nowrap;
     }
-    .price { font-size: 3rem; font-weight: 800; color: #fff; margin: 24px 0 8px; }
-    .price-period { font-size: 1rem; color: var(--text-muted); font-weight: 400; }
-    .features { list-style: none; margin: 32px 0; text-align: left; }
-    .features li {
-      padding: 8px 0; color: var(--text-muted); font-size: 0.95rem;
+    .pricing-name { font-size: 1rem; font-weight: 600; color: var(--muted); margin-bottom: 12px; }
+    .pricing-price { font-family: var(--mono); font-size: 2.8rem; font-weight: 700; color: #fff; line-height: 1; }
+    .pricing-price sup { font-size: 1.2rem; vertical-align: top; margin-top: 6px; color: var(--muted); }
+    .pricing-price span { font-size: 1rem; color: var(--muted); font-weight: 400; }
+    .pricing-desc { color: var(--muted); font-size: 0.88rem; margin: 12px 0 24px; line-height: 1.6; }
+    .pricing-includes { list-style: none; margin-bottom: 28px; }
+    .pricing-includes li {
       display: flex; align-items: center; gap: 10px;
+      font-size: 0.88rem; color: var(--muted);
+      margin-bottom: 9px;
     }
-    .features li svg { width: 18px; height: 18px; color: var(--primary); flex-shrink: 0; }
+    .pricing-includes li .check { color: var(--green); font-weight: 700; }
+    .btn-buy {
+      display: block; text-align: center; text-decoration: none;
+      background: linear-gradient(135deg, var(--indigo), var(--green-dim));
+      color: #fff; font-weight: 700; font-size: 14px;
+      padding: 13px 24px; border-radius: 10px;
+      transition: opacity .2s, transform .2s;
+    }
+    .btn-buy:hover { opacity: .85; transform: translateY(-1px); }
+    .btn-buy-ghost {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+    .btn-buy-ghost:hover { border-color: rgba(255,255,255,0.25); }
 
-    /* ── FOOTER ── */
+    /* ─── WHY SECTION ─── */
+    .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+    .why-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px 24px;
+      transition: border-color .25s;
+    }
+    .why-card:hover { border-color: rgba(0,245,160,0.25); }
+    .why-num {
+      font-family: var(--mono);
+      font-size: 2.2rem; font-weight: 700;
+      color: var(--green);
+      opacity: .25; line-height: 1;
+      margin-bottom: 10px;
+    }
+    .why-title { font-weight: 700; font-size: 1rem; margin-bottom: 7px; }
+    .why-text  { color: var(--muted); font-size: 0.87rem; line-height: 1.65; }
+
+    /* ─── CTA STRIP ─── */
+    .cta-strip {
+      background: linear-gradient(135deg, rgba(108,99,255,0.15), rgba(0,245,160,0.08));
+      border: 1px solid rgba(108,99,255,0.2);
+      border-radius: 24px;
+      padding: 64px 8%;
+      text-align: center;
+      margin: 0 6% 90px;
+    }
+    .cta-strip h2 { font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 16px; }
+    .cta-strip p  { color: var(--muted); font-size: 1.05rem; margin-bottom: 36px; }
+
+    /* ─── FOOTER ─── */
     footer {
-      border-top: 1px solid var(--border); padding: 80px 0 40px;
-      background: linear-gradient(to bottom, var(--bg-body), #000);
+      position: relative; z-index: 1;
+      border-top: 1px solid var(--border);
+      padding: 48px 6% 36px;
+      display: flex; flex-wrap: wrap;
+      gap: 24px; justify-content: space-between; align-items: center;
     }
-    .footer-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 48px; margin-bottom: 64px;
-    }
-    .footer-col h4 { color: #fff; font-size: 1rem; margin-bottom: 24px; }
-    .footer-col ul { list-style: none; }
-    .footer-col li { margin-bottom: 12px; }
-    .footer-col a { color: var(--text-muted); text-decoration: none; transition: 0.2s; }
-    .footer-col a:hover { color: var(--primary); }
-    .copyright {
-      text-align: center; color: rgba(255,255,255,0.2); font-size: 0.85rem; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.05);
-    }
+    .footer-copy { color: var(--muted); font-size: 13px; }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { color: var(--muted); font-size: 13px; text-decoration: none; transition: color .2s; }
+    .footer-links a:hover { color: #fff; }
+
+    /* ─── SCROLLBAR ─── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: rgba(108,99,255,0.4); border-radius: 3px; }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <a href="#" style="display: flex; align-items: center;">
-      <!-- Generated Logo Image (Larger Version) -->
-      <img src="https://user-gen-media-assets.s3.amazonaws.com/seedream_images/7ab9e742-c85e-4947-a594-0db18d9201a1.png" alt="EdgeQuantLabs Logo" class="logo-img">
-    </a>
-    <ul class="nav-links">
-      <li><a href="#products">Tools</a></li>
-      <li><a href="#pricing">Pricing</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <div class="nav-actions">
-      <a href="#pricing" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.85rem;">Get Started</a>
+<!-- ═══════════════════════ NAV ═══════════════════════ -->
+<nav>
+  <a href="#" class="logo">
+    <div class="logo-icon">EQ</div>
+    <div class="logo-text">
+      <span class="logo-name">Edge<span>Quant</span>Labs</span>
+      <span class="logo-tag">Engineered for Performance</span>
     </div>
-  </nav>
+  </a>
+  <div class="nav-links">
+    <a href="#indicators">Indicators</a>
+    <a href="#platforms">Platforms</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#contact">Contact</a>
+    <a href="#pricing" class="nav-cta">Get Started →</a>
+  </div>
+</nav>
 
-  <!-- HERO -->
-  <section class="hero container">
-    <div class="badge"><div class="badge-dot"></div>v2.0 Now Available for NinjaTrader 8</div>
-    <h1 class="text-gradient">Chart Smarter.<br>Trade Sharper.</h1>
-    <p class="hero-sub">Precision tools for algorithmic traders. Risk management, visibility control, and drawing tools engineered to protect capital and streamline your NinjaTrader workflow.</p>
-    <div class="hero-buttons">
-      <a href="#products" class="btn btn-primary">Browse Indicators</a>
-      <a href="#features" class="btn btn-glass">Learn More</a>
+<!-- ═══════════════════════ HERO ═══════════════════════ -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="badge">
+    <span class="badge-dot"></span>
+    Now Available on NinjaTrader 8
+  </div>
+  <h1>
+    Professional Tools.<br>
+    <span class="accent">Engineered</span> for<br>
+    <span class="accent2">Performance.</span>
+  </h1>
+  <p>Precision-built indicators for serious traders. Protect your capital, manage your charts, and maximize every setup — all inside your trading platform.</p>
+  <div class="hero-btns">
+    <a href="#indicators" class="btn-primary">Explore Indicators</a>
+    <a href="#pricing" class="btn-ghost">View Pricing</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-val"><span>3</span></div>
+      <div class="stat-lbl">Pro Indicators</div>
     </div>
-  </section>
-
-  <!-- PRODUCTS GRID -->
-  <section id="products" class="container">
-    <h2 class="section-title">Upgrade Your <span class="text-accent">Edge</span></h2>
-    <p class="section-desc">Modular tools designed to solve specific trading friction points.</p>
-
-    <div class="bento-grid">
-
-      <!-- Card 1: Equity Guard (Large) -->
-      <div class="bento-card card-1">
-        <div style="display:flex; justify-content:space-between; align-items:start;">
-          <div class="card-icon">🛡️</div>
-          <span class="tag tag-featured">Flagship</span>
-        </div>
-        <h3 class="card-title">Equity Guard</h3>
-        <p class="card-text">Automated risk manager that flattens positions when daily loss limits are breached. Essential for prop firm accounts.</p>
-        <div class="visual" style="border:1px solid rgba(239,68,68,0.3); background: linear-gradient(135deg, rgba(239,68,68,0.05) 0%, transparent 100%);">
-          <div style="position:absolute; top:20px; left:20px; right:20px;">
-            <div style="display:flex; justify-content:space-between; color:rgba(255,255,255,0.7); font-size:0.8rem; margin-bottom:8px;">
-              <span>Daily P&L</span>
-              <span style="color:#ef4444;">-$450.00</span>
-            </div>
-            <div style="height:4px; background:rgba(255,255,255,0.1); border-radius:2px;">
-              <div style="width:70%; height:100%; background:#ef4444; border-radius:2px;"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 2: Visibility (Medium) -->
-      <div class="bento-card card-2">
-        <div style="display:flex; justify-content:space-between; align-items:start;">
-          <div class="card-icon">👁️</div>
-          <span class="tag tag-std">Utility</span>
-        </div>
-        <h3 class="card-title">Visibility Manager</h3>
-        <p class="card-text">Toggle complex indicator sets with one click. Switch between "Clean Chart" and "Full Analysis" instantly.</p>
-        <div class="visual" style="border:1px solid rgba(99,102,241,0.3); background: linear-gradient(135deg, rgba(99,102,241,0.05) 0%, transparent 100%);">
-           <div style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); display:flex; gap:10px;">
-             <div style="width:40px; height:20px; border-radius:10px; background:#6366f1;"></div>
-             <div style="width:40px; height:20px; border-radius:10px; background:rgba(255,255,255,0.1);"></div>
-           </div>
-        </div>
-      </div>
-
-      <!-- Card 3: R:R Tool (Wide) -->
-      <div class="bento-card card-3">
-        <div style="max-width: 500px;">
-          <div class="card-icon">📐</div>
-          <h3 class="card-title">Reward-to-Risk Drawing Tool</h3>
-          <p class="card-text" style="margin-bottom:0;">Live on-chart calculation of Risk/Reward ratios and projected P&L before you enter. Visualize your R-multiples instantly.</p>
-        </div>
-        <div>
-          <a href="#contact" class="btn btn-glass">Buy for $47</a>
-        </div>
-      </div>
-
+    <div class="stat">
+      <div class="stat-val"><span>NT8</span></div>
+      <div class="stat-lbl">Platform Support</div>
     </div>
-  </section>
-
-  <!-- PRICING -->
-  <section id="pricing" class="container">
-    <h2 class="section-title">Simple Pricing</h2>
-    <div class="pricing-container">
-
-      <!-- Single -->
-      <div class="pricing-card">
-        <h3>Single Indicator</h3>
-        <div class="price">$47<span style="font-size:1.5rem">+</span></div>
-        <p class="price-period">Lifetime License</p>
-        <ul class="features">
-          <li><svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>One Indicator of choice</li>
-          <li><svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>Free Updates</li>
-          <li><svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>Email Support</li>
-        </ul>
-        <a href="#contact" class="btn btn-glass" style="width:100%">Choose</a>
-      </div>
-
-      <!-- Bundle -->
-      <div class="pricing-card highlight">
-        <div class="popular-pill">BEST VALUE</div>
-        <h3>The Edge Bundle</h3>
-        <div class="price">$167</div>
-        <p class="price-period">One-time payment</p>
-        <ul class="features">
-          <li><svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>All 3 Current Indicators</li>
-          <li><svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>Priority Support</li>
-          <li><svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>Future Beta Access</li>
-        </ul>
-        <a href="#contact" class="btn btn-primary" style="width:100%">Get Bundle</a>
-      </div>
-
+    <div class="stat">
+      <div class="stat-val"><span>∞</span></div>
+      <div class="stat-lbl">Edge Delivered</div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-col" style="max-width:300px;">
-          <!-- Footer Logo Image (Larger Version) -->
-          <a href="#" style="display:block; margin-bottom:20px;">
-            <img src="https://user-gen-media-assets.s3.amazonaws.com/seedream_images/7ab9e742-c85e-4947-a594-0db18d9201a1.png" alt="EdgeQuantLabs Logo" style="height: 90px; width: auto; border-radius: 8px;">
-          </a>
-          <p style="color:var(--text-muted); font-size:0.9rem;">Empowering retail traders with institutional-grade risk and analysis tools.</p>
-        </div>
-        <div class="footer-col">
-          <h4>Products</h4>
-          <ul>
-            <li><a href="#">Equity Guard</a></li>
-            <li><a href="#">Visibility Manager</a></li>
-            <li><a href="#">Risk Tool</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Support</h4>
-          <ul>
-            <li><a href="#">Documentation</a></li>
-            <li><a href="#">Installation Guide</a></li>
-            <li><a href="mailto:hello@edgequantlabs.com">Contact Us</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="copyright">
-        &copy; 2026 EdgeQuantLabs. Built for NinjaTrader 8.
-      </div>
+<!-- ═══════════════════════ INDICATORS ═══════════════════════ -->
+<section id="indicators">
+  <div class="section-header">
+    <p class="section-eyebrow">Our Indicators</p>
+    <h2 class="section-title">Three Tools. One Edge.</h2>
+    <p class="section-sub">Each indicator is purpose-built to solve a real problem traders face every day — from risk control to chart clarity to reward analysis.</p>
+  </div>
+
+  <div class="bento bento-3">
+
+    <!-- Equity Guard -->
+    <div class="card">
+      <div class="card-icon icon-red">🛡️</div>
+      <h3>Equity Guard</h3>
+      <p>Your automated risk manager — the last line of defence between you and a blown account. Monitors your account equity in real time and enforces hard limits so emotions never override your rules.</p>
+      <ul class="feature-list">
+        <li>Daily loss lock — auto-disables trading at max loss</li>
+        <li>Trailing drawdown protection</li>
+        <li>Session-based reset controls</li>
+        <li>Visual equity dashboard on chart</li>
+        <li>Configurable alerts & notifications</li>
+      </ul>
+      <span class="card-platform">NinjaTrader 8</span>
     </div>
-  </footer>
+
+    <!-- Indicator Visibility Manager -->
+    <div class="card">
+      <div class="card-icon icon-blue">👁️</div>
+      <h3>Indicator Visibility Manager</h3>
+      <p>Take full command of your chart workspace. Toggle any indicator on or off with a single click — no more digging through properties panels during live market hours.</p>
+      <ul class="feature-list">
+        <li>One-click show / hide per indicator</li>
+        <li>Save and recall custom visibility profiles</li>
+        <li>Clean floating control panel UI</li>
+        <li>Compatible with all NT8 native indicators</li>
+        <li>Zero-latency chart updates</li>
+      </ul>
+      <span class="card-platform">NinjaTrader 8</span>
+    </div>
+
+    <!-- Reward to Risk Drawing Tool -->
+    <div class="card">
+      <div class="card-icon icon-green">📐</div>
+      <h3>Reward to Risk Drawing Tool</h3>
+      <p>Visualize your trade setup before you pull the trigger. Draw your entry, stop, and target directly on the chart and instantly see your R:R ratio, dollar risk, and contract sizing.</p>
+      <ul class="feature-list">
+        <li>Interactive drag-to-draw R:R zones</li>
+        <li>Real-time P&L and ratio display</li>
+        <li>Dollar risk calculator per setup</li>
+        <li>Multiple simultaneous drawings</li>
+        <li>Clean, minimal overlay design</li>
+      </ul>
+      <span class="card-platform">NinjaTrader 8</span>
+    </div>
+
+  </div>
+
+  <!-- Platform Banner -->
+  <div class="platform-banner">
+    <div>
+      <div class="platform-label">Currently Supported</div>
+      <div class="platform-name">NinjaTrader 8</div>
+    </div>
+    <span class="platform-badge">✓ Live Now</span>
+    <div class="platform-future">
+      Coming soon: <strong>TradingView</strong> · <strong>Sierra Chart</strong> · <strong>Bookmap</strong>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ WHY EQL ═══════════════════════ -->
+<section id="platforms" style="background: rgba(255,255,255,0.01); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+  <div class="section-header">
+    <p class="section-eyebrow">Why EdgeQuantLabs</p>
+    <h2 class="section-title">Built Different.</h2>
+    <p class="section-sub">We don't build indicators to impress. We build them to work — fast, clean, and reliably — under real market conditions.</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-num">01</div>
+      <div class="why-title">Trade-Tested Logic</div>
+      <div class="why-text">Every feature exists because a real trader needed it. No bloat, no vanity metrics — just tools that solve live trading problems.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-num">02</div>
+      <div class="why-title">Performance First</div>
+      <div class="why-text">Lightweight, optimized code that won't slow your platform. Engineered so that execution is never compromised.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-num">03</div>
+      <div class="why-title">Clean UI Design</div>
+      <div class="why-text">Minimalist overlays that give you information without visual noise. Your chart stays your chart.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-num">04</div>
+      <div class="why-title">Multi-Platform Roadmap</div>
+      <div class="why-text">Starting with NT8, expanding to TradingView, Sierra Chart, and more. Buy once per platform, upgrade paths included.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ PRICING ═══════════════════════ -->
+<section id="pricing">
+  <div class="section-header">
+    <p class="section-eyebrow">Pricing</p>
+    <h2 class="section-title">Simple. Transparent.</h2>
+    <p class="section-sub">One-time purchase per indicator. No subscriptions, no hidden fees. Yours to keep.</p>
+  </div>
+
+  <div class="pricing-grid">
+
+    <div class="pricing-card">
+      <div class="pricing-name">Equity Guard</div>
+      <div class="pricing-price"><sup>$</sup>97 <span>one-time</span></div>
+      <div class="pricing-desc">Full risk management suite for NinjaTrader 8. Protect every session, every day.</div>
+      <ul class="pricing-includes">
+        <li><span class="check">✓</span> Lifetime NT8 licence</li>
+        <li><span class="check">✓</span> Free updates</li>
+        <li><span class="check">✓</span> Setup documentation</li>
+        <li><span class="check">✓</span> Email support</li>
+      </ul>
+      <a href="#contact" class="btn-buy btn-buy-ghost">Buy Now</a>
+    </div>
+
+    <div class="pricing-card">
+      <div class="pricing-name">Indicator Visibility Manager</div>
+      <div class="pricing-price"><sup>$</sup>47 <span>one-time</span></div>
+      <div class="pricing-desc">Declutter your charts instantly. One-click indicator toggling for professional chart management.</div>
+      <ul class="pricing-includes">
+        <li><span class="check">✓</span> Lifetime NT8 licence</li>
+        <li><span class="check">✓</span> Free updates</li>
+        <li><span class="check">✓</span> Setup documentation</li>
+        <li><span class="check">✓</span> Email support</li>
+      </ul>
+      <a href="#contact" class="btn-buy btn-buy-ghost">Buy Now</a>
+    </div>
+
+    <div class="pricing-card featured">
+      <div class="featured-tag">⭐ Best Value</div>
+      <div class="pricing-name">Full Suite Bundle</div>
+      <div class="pricing-price"><sup>$</sup>167 <span>one-time</span></div>
+      <div class="pricing-desc">All 3 indicators for NT8 — Equity Guard, Visibility Manager, and R:R Drawing Tool.</div>
+      <ul class="pricing-includes">
+        <li><span class="check">✓</span> All 3 indicator licences</li>
+        <li><span class="check">✓</span> Lifetime NT8 access</li>
+        <li><span class="check">✓</span> Free updates to all 3</li>
+        <li><span class="check">✓</span> Priority email support</li>
+        <li><span class="check">✓</span> Setup walkthrough call</li>
+      </ul>
+      <a href="#contact" class="btn-buy">Get the Bundle →</a>
+    </div>
+
+    <div class="pricing-card">
+      <div class="pricing-name">R:R Drawing Tool</div>
+      <div class="pricing-price"><sup>$</sup>47 <span>one-time</span></div>
+      <div class="pricing-desc">Draw your trade setups, visualize risk instantly, and size your position before every entry.</div>
+      <ul class="pricing-includes">
+        <li><span class="check">✓</span> Lifetime NT8 licence</li>
+        <li><span class="check">✓</span> Free updates</li>
+        <li><span class="check">✓</span> Setup documentation</li>
+        <li><span class="check">✓</span> Email support</li>
+      </ul>
+      <a href="#contact" class="btn-buy btn-buy-ghost">Buy Now</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════ CTA STRIP ═══════════════════════ -->
+<div class="cta-strip" id="contact">
+  <h2>Ready to Trade with an Edge?</h2>
+  <p>Join traders who protect their capital and execute with precision — every session.</p>
+  <div class="hero-btns" style="justify-content:center;">
+    <a href="mailto:hello@edgequantlabs.com" class="btn-primary">Contact Us →</a>
+    <a href="#indicators" class="btn-ghost">View Indicators</a>
+  </div>
+</div>
+
+<!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+<footer>
+  <a href="#" class="logo">
+    <div class="logo-icon">EQ</div>
+    <div class="logo-text">
+      <span class="logo-name">Edge<span>Quant</span>Labs</span>
+      <span class="logo-tag">Engineered for Performance</span>
+    </div>
+  </a>
+  <div class="footer-copy">© 2026 EdgeQuantLabs. All rights reserved.</div>
+  <div class="footer-links">
+    <a href="#indicators">Indicators</a>
+    <a href="#pricing">Pricing</a>
+    <a href="mailto:hello@edgequantlabs.com">hello@edgequantlabs.com</a>
+  </div>
+</footer>
 
 </body>
 </html>
